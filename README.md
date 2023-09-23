@@ -1,7 +1,7 @@
 # To-Do List 
 
 
-This is a simple web application for managing your to-do list. You can add, update, delete, and mark tasks as completed.
+This is a simple web application for managing your to-do list. You can add, update and delete tasks.
 
 ## Features
 
@@ -19,3 +19,10 @@ This is a simple web application for managing your to-do list. You can add, upda
 - Bootstrap (for styling)
 - SweetAlert2 (for alerts)
 - Gulp (for task automation)
+
+
+## Usage
+
+### Task Slug
+
+Each task is printed in a slug format in the console. The slug format converts task descriptions to lowercase, replaces spaces with hyphens, and removes special characters. 
