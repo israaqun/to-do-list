@@ -4,15 +4,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const existingTasks = new Set();
 
     if (isLocalStorageAvailable()) {
-        // If local storage is available, display the task list and hide the "No tasks" message.
         taskList.style.display = "block";
         listunav.style.display = "none";
 
-        // Load tasks from local storage and populate the task list.
         loadTasksFromLocalStorage();
         updateDeleteAllButtonVisibility();
     } else {
-        // If local storage is not available, display the "No tasks" message and hide the task list.
+   
         taskList.style.display = "none";
         listunav.style.display = "block";
     }
@@ -22,34 +20,34 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function isTaskUpdatedTextUnique(taskText, updatedText) {
-        // Check if the updated task text is unique among existing tasks
+   
         if (taskText === updatedText) {
-            return true; // No change in text, consider it unique
+            return true; 
         }
         return !existingTasks.has(updatedText);
     }
 
-    // Function to update the visibility of the "Delete All" button
+  
     function updateDeleteAllButtonVisibility() {
         const deleteAllButton = document.getElementById("deleteAllButton");
 
         if (taskList.children.length > 0) {
-            deleteAllButton.style.display = "block"; // Show the button
+            deleteAllButton.style.display = "block"; 
         } else {
-            deleteAllButton.style.display = "none"; // Hide the button
+            deleteAllButton.style.display = "none"; 
         }
     }
 
-    // Call the function initially to set the initial visibility
+   
     updateDeleteAllButtonVisibility();
 
     function loadTasksFromLocalStorage() {
         const savedTasks = localStorage.getItem("taskList");
 
         if (savedTasks) {
-            // If there are saved tasks in local storage, populate the task list.
+         
             taskList.innerHTML = savedTasks;
-            // Populate the set of existing tasks
+       
             taskList.querySelectorAll(".task-text").forEach(function (taskTextElement) {
                 existingTasks.add(taskTextElement.textContent);
             });
@@ -82,8 +80,8 @@ document.addEventListener("DOMContentLoaded", function () {
         function slugify(text) {
             return text
                 .toLowerCase()
-                .replace(/ /g, "-") // Replace spaces with hyphens
-                .replace(/[^a-zA-Z0-9-]/g, ""); // Remove special characters
+                .replace(/ /g, "-") 
+                .replace(/[^a-zA-Z0-9-]/g, ""); 
         }
         const slug = slugify(taskText);
         console.log("Task Slug:", slug);
@@ -126,7 +124,7 @@ document.addEventListener("DOMContentLoaded", function () {
         taskList.appendChild(listItem);
 
         taskInput.value = "";
-        existingTasks.add(taskText); // Add the task to the set of existing tasks
+        existingTasks.add(taskText); 
         saveTaskListToLocalStorage();
         updateDeleteAllButtonVisibility();
     }
@@ -191,21 +189,20 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     function deleteAllTasks() {
-        taskList.innerHTML = ""; // Clear all tasks from the list
-        existingTasks.clear(); // Clear the set of existing tasks
-        saveTaskListToLocalStorage(); // Update local storage
+        taskList.innerHTML = ""; 
+        existingTasks.clear(); 
+        saveTaskListToLocalStorage(); 
         updateDeleteAllButtonVisibility();
     }
     
 
-    // Find the "Create" button by its class name and add an event listener
     const createButton = document.querySelector(".task-button");
     createButton.addEventListener("click", createTask);
 });
 function deleteAllTasks() {
 
-    taskList.innerHTML = ""; // Clear all tasks from the list
-    existingTasks.clear(); // Clear the set of existing tasks
-    saveTaskListToLocalStorage(); // Update local storage
+    taskList.innerHTML = ""; 
+    existingTasks.clear(); 
+    saveTaskListToLocalStorage(); 
     updateDeleteAllButtonVisibility();
 }
